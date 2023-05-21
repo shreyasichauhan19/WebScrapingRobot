@@ -26,3 +26,18 @@ class Robot:
         soup = BeautifulSoup(response.text, 'html.parser')
         first_paragraph = soup.select_one('div.mw-parser-output > p:not(.mw-empty-elt)').text
         print(first_paragraph)
+
+    def print_bday_dday(self, webpage):
+        self.open_webpage(webpage)
+        time.sleep(5)  # Allow the page to load
+        response = requests.get(webpage)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        date_of_birth = soup.find('span', {'class': 'bday'}).text if soup.find('span', {'class': 'bday'}) else 'N/A'
+        date_of_death ='N/A'
+        infobox = soup.find('table', {'class': 'infobox biography vcard'})
+        if infobox:
+            th_elements = infobox.find_all('th')
+            for th in th_elements:
+                if "died" in th.text.lower():
+                    date_of_death = th.find_next('td').text.strip().split('\n')[0].split('[')[0]
+        print(f"Birth date: {date_of_birth}\n- Death date: {date_of_death}\n")
