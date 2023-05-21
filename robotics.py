@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import time
 import requests
 import re
+from datetime import datetime
+
 
 br = Selenium()
 
@@ -12,10 +14,11 @@ class Robot:
         self.name = name
 
     def say_hello(self):
-        print("Hello, my name is " + self.name)
-
+        print(f"Hello, my name is {self.name} :D and I love science. I think scientists are cool and I love learning about them. I thought I would share some of that information with you, beep boop." )
+        print("After you hit run, I will open a web browser, browse wikipedia for the scientist's info, scrap it, do some more magic and print thier informaion on your console."\n)
+    
     def say_goodbye(self):
-        print("Goodbye, my name is " + self.name)
+        print(f"Beep boop... beep boop {self.name} is signing off")
 
     def open_webpage(self, webpage):
         br.open_available_browser(webpage)
@@ -38,7 +41,11 @@ class Robot:
                     match = re.search(r'\((.*?)\)', death_data_string)
                     if match:
                         death_date = match.group(1)
+                    bday = datetime.strptime(date_of_birth, '%Y-%m-%d')
+                    dday = datetime.strptime(death_date, '%Y-%m-%d')
+                    age_at_death = int((dday - bday).days / 365.25)  # Using 365.25 to account for leap years
+                    
         print(first_paragraph)
         print(f"Date of Birth: {date_of_birth}")
         print(f"Date of Death: {death_date}")
-    
+        print(f"Age at Death: {age_at_death}"\n)
