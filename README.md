@@ -1,8 +1,6 @@
-# Robotic Researcher
-Welcome to Quandri's technical assignment. This assignment is meant to simulate the work
-you would do working at Quandri building software robots. 
+# WebScrapingRobot
 
-## Your task
+## Task
 The purpose of this software robot is to find key information about important scientists
 and display it to the user.
 
