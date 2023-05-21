@@ -1,45 +1,26 @@
-from selenium import webdriver
-from bs4 import BeautifulSoup
+from robotics import Robot
 import time
 
-# List of scientist names
 SCIENTISTS = ["Albert Einstein", "Isaac Newton", "Marie Curie", "Charles Darwin"]
 
-def get_wikipedia_url(title):
-    """Create and return the Wikipedia URL for the given title."""
-    return 'https://en.wikipedia.org/wiki/' + title.replace(' ', '_')
+robot = Robot("Quandrinaut")
 
-def fetch_page_source(driver, url):
-    """Fetch the page source using the driver and return a BeautifulSoup object."""
-    driver.get(url)
-    time.sleep(2)  # Wait for the page to load
-    return BeautifulSoup(driver.page_source, 'lxml')
 
-def extract_birth_date(soup):
-    """Extract and return the birth date from the BeautifulSoup object."""
-    return soup.find('span', {'class': 'bday'}).text if soup.find('span', {'class': 'bday'}) else 'N/A'
+def introduce_yourself():
+    robot.say_hello()
 
-def main(titles):
-    # Instantiate the web driver
-    driver = webdriver.Chrome()
+def open_articles():
+    for scientist in SCIENTISTS:
+        formatted_scientist = scientist.replace(" ", "_")
+        robot.open_webpage(f"https://en.wikipedia.org/wiki/{formatted_scientist}")
+        time.sleep(2)  # pause for 5 seconds to let the page load
 
-    # Iterate over the list of scientist names
-    for title in titles:
-        # Create the Wikipedia URL
-        url = get_wikipedia_url(title)
 
-        # Fetch the page content
-        soup = fetch_page_source(driver, url)
+def main():
+    introduce_yourself()
+    open_articles()
 
-        # Extract the birth date
-        birth_date = extract_birth_date(soup)
 
-        print(f"{title}:\n- Birth date: {birth_date}\n")
 
-    # Wait for the user to hit Enter before ending the script, without this the driver just shuts down automatically
-    input("Press Enter to close the browser...")
-    driver.quit()
-
-# Call the main function with the list of names
 if __name__ == "__main__":
-    main(SCIENTISTS)
+    main()
