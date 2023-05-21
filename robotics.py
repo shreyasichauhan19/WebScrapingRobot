@@ -15,7 +15,7 @@ class Robot:
 
     def say_hello(self):
         print(f"Hello, my name is {self.name} :D and I love science. I think scientists are cool and I love learning about them. I thought I would share some of that information with you, beep boop." )
-        print("After you hit run, I will open a web browser, browse wikipedia for the scientist's info, scrap it, do some more magic and print thier informaion on your console."\n)
+        print("After you hit run, I will open a web browser, browse wikipedia for the scientist's info, scrap it, do some more magic and print thier informaion on your console.")
     
     def say_goodbye(self):
         print(f"Beep boop... beep boop {self.name} is signing off")
@@ -48,4 +48,4 @@ class Robot:
         print(first_paragraph)
         print(f"Date of Birth: {date_of_birth}")
         print(f"Date of Death: {death_date}")
-        print(f"Age at Death: {age_at_death}"\n)
+        print(f"Age at Death: {age_at_death}")

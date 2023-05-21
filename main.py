@@ -13,7 +13,7 @@ def introduce_yourself():
 def open_articles():
     for scientist in SCIENTISTS:
         formatted_scientist = scientist.replace(" ", "_")
-        print(f"~~~~~~~~~~~~~ {scientist} ~~~~~~~~~~~~~~~ "\n)
+        print(f"~~~~~~~~~~~~~ {scientist} ~~~~~~~~~~~~~~~ ")
         robot.data_scraping(f"https://en.wikipedia.org/wiki/{formatted_scientist}")
         print('-' * 50)
 
