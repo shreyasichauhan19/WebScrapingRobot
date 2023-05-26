@@ -1,22 +1,13 @@
 # WebScrapingRobot
 
 ## Task
-The purpose of this software robot is to find key information about important scientists
-and display it to the user.
+The purpose of this software robot is to find key information about important scientists and display it to the user.
+RPA Framework Documentation: https://rpaframework.org/#
 
-When this robot is run, it should:
+## How to run
+- If you are using Python on a system with multiple Python versions, you may need to use `pip3` instead of `pip`
+- Install python (I am using `3.9.1`)
+- pip install selenuim
+- pip install beautifulsoup4
+- pip install rpaframework
 
-1. Introduce itself and explain the steps it's about to take.
-2. Navigate to the wikipedia page of the scientists found in the list SCIENTISTS.
-3. Retrieve the dates the scientists were born and died and calculate their age. Also, 
-    retrieve the first paragraph of their wikipedia page.
-4. Display all of this information to the user in an easily understood manner. 
-
-## A few things to keep in mind
-- This should be written as production level code. i.e. You would expect this code to
-    pass a PR to get merged into main.
-- As this is a software robot, it should not make use of any wikipedia API but it should 
-    instead open a browser and navigate to wikipedia in the same manner a human would.
-- The provided code can be added to, removed and changed as you see fit.
-- Please use rpaframework to complete this task. Documentation for the provided 
-    library can be found [here](https://rpaframework.org/#)

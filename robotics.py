@@ -29,7 +29,10 @@ class Robot:
         response = requests.get(webpage)
         soup = BeautifulSoup(response.text, 'html.parser')
         first_paragraph = soup.select_one('div.mw-parser-output > p:not(.mw-empty-elt)').text
-        date_of_birth = soup.find('span', {'class': 'bday'}).text if soup.find('span', {'class': 'bday'}) else 'N/A'
+        date_of_birth = soup.find('span', {'class': 'bday'}).text if soup.find('span', {'class': 'bday'}) else 'N/A' #The span class "bday" is used on Wikipedia to mark the birthdate, so we can scrape it directly. 
+        #However, the "dday" span class is not standardly used to mark the death date on Wikipedia, which is why it cannot be scraped in the same way.
+
+
         date_of_death = 'N/A'
         infobox = soup.find('table', {'class': 'infobox biography vcard'})
         if infobox:
